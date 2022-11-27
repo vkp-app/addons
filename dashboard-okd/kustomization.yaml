@@ -1,7 +1,6 @@
 namespace: openshift-console
 resources:
   - namespace.yaml
-  - secret.yaml
 patchesStrategicMerge:
   - patch-test.yaml
 helmCharts:
@@ -44,5 +43,5 @@ helmCharts:
         - name: tls
           mountPath: /var/run/secrets/dcas.dev/tls
           config:
-            secret:
-              secretName: tls-ca.crt
+            configMap:
+              name: platform-root-ca.crt

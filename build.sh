@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 for dir in ./*/; do
     dir=${dir%*/}
     dir="${dir##*/}"

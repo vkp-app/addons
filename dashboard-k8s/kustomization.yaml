@@ -1,7 +1,6 @@
 namespace: kubernetes-dashboard
 resources:
   - https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
-  - secret.yaml
   - ingress.yaml
 images:
   - name: kubernetesui/dashboard
@@ -41,13 +40,13 @@ patches:
         path: /spec/template/spec/volumes/-
         value:
           name: tls
-          secret:
-            secretName: tls-ca.crt
+          configMap:
+            name: platform-root-ca.crt
       - op: add
         path: /spec/template/spec/containers/-
         value:
           name: oauth-proxy
-          image: harbor.dcas.dev/quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
+          image: harbor.dcas.dev/quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
@@ -69,5 +68,5 @@ patches:
             - --cookie-secure=true
             - --cookie-secret=k5aNVAjHCpK_xHftxHhEsxB2CAozam2HFY0jNn1plVI=
             - --cookie-refresh=2h
-            - --email-domain=kilgore.trout
+            - --email-domain=*
             - --pass-authorization-header=true
