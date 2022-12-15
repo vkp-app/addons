@@ -25,7 +25,7 @@ helmCharts:
         enabled: true
         className: __GLASS_INGRESS_CLASS__
         annotations:
-          cert-manager.io/cluster-issuer: iss-kube
+          cert-manager.io/cluster-issuer: __VKP_CLUSTER_ISSUER__
         hosts:
           - host: console.__GLASS_CLUSTER_URL__
             paths: ["/"]

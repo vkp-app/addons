@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: kubernetes-dashboard
   annotations:
-    cert-manager.io/cluster-issuer: iss-kube
+    cert-manager.io/cluster-issuer: __VKP_CLUSTER_ISSUER__
 spec:
   ingressClassName: __GLASS_INGRESS_CLASS__
   rules:
