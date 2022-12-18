@@ -3,7 +3,7 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: podinfo
 spec:
-  ingressClassName: __GLASS_INGRESS_CLASS__
+  ingressClassName: __VKP_INGRESS_CLASS__
   rules:
     - host: podinfo.io
       http:

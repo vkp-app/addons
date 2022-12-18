@@ -1,0 +1,39 @@
+namespace: prometheus-adapter
+resources:
+  - namespace.yaml
+  - manifests/api-service.yaml
+  - manifests/cluster-role.yaml
+  - manifests/cluster-role-aggregated-metrics-reader.yaml
+  - manifests/cluster-role-binding.yaml
+  - manifests/cluster-role-binding-delegator.yaml
+  - manifests/cluster-role-binding-hpa-custom-metrics.yaml
+  - manifests/cluster-role-metrics-server-resources.yaml
+  - manifests/config-map.yaml
+  - manifests/deployment.yaml
+  - manifests/network-policy.yaml
+  - manifests/pod-disruption-budget.yaml
+  - manifests/role-binding-auth-reader.yaml
+  - manifests/service.yaml
+  - manifests/service-account.yaml
+images:
+  - name: registry.k8s.io/prometheus-adapter/prometheus-adapter
+    newName: cr.vkp.app/registry.k8s.io/prometheus-adapter/prometheus-adapter
+patchesStrategicMerge:
+  - patch_deployment.yaml
+patches:
+  - target:
+      kind: Deployment
+      name: prometheus-adapter
+    patch: |
+      - op: add
+        path: /spec/template/spec/volumes/-
+        value:
+          name: pki
+          configMap:
+            name: platform-root-ca.crt
+      - op: add
+        path: /spec/template/spec/containers/0/volumeMounts/-
+        value:
+          name: pki
+          mountPath: /var/run/secrets/paas.dcas.dev/pki
+          readOnly: true

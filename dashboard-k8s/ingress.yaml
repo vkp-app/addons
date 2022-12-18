@@ -5,9 +5,9 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: __VKP_CLUSTER_ISSUER__
 spec:
-  ingressClassName: __GLASS_INGRESS_CLASS__
+  ingressClassName: __VKP_INGRESS_CLASS__
   rules:
-    - host: console.__GLASS_CLUSTER_URL__
+    - host: console.__VKP_CLUSTER_URL__
       http:
         paths:
           - path: /
@@ -20,4 +20,4 @@ spec:
   tls:
     - secretName: kubernetes-dashboard-tls
       hosts:
-        - console.__GLASS_CLUSTER_URL__
+        - console.__VKP_CLUSTER_URL__
