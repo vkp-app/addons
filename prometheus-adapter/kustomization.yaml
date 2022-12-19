@@ -1,4 +1,4 @@
-namespace: prometheus-adapter
+namespace: monitoring
 resources:
   - namespace.yaml
   - manifests/api-service.yaml
