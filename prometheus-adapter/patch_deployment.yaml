@@ -19,7 +19,7 @@ spec:
             - --logtostderr=true
             - --metrics-relist-interval=1m
             - --secure-port=6443
-            - --tls-cipher-suites=TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA
-            - --prometheus-url=https://metrics-proxy.__VKP_PLATFORM_URL__
-            - --prometheus-auth-incluster=true
-            - --prometheus-ca-file=/var/run/secrets/paas.dcas.dev/pki/ca.crt
+            - --prometheus-url=https://metrics-proxy.__VKP_PLATFORM_NAMESPACE__.svc.cluster.local:443
+            - --prometheus-client-tls-cert-file=/var/run/secrets/paas.dcas.dev/identity/tls.crt
+            - --prometheus-client-tls-key-file=/var/run/secrets/paas.dcas.dev/identity/tls.key
+            - --prometheus-ca-file=/var/run/secrets/paas.dcas.dev/identity/ca.crt

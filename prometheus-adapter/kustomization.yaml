@@ -14,6 +14,7 @@ resources:
   - manifests/role-binding-auth-reader.yaml
   - manifests/service.yaml
   - manifests/service-account.yaml
+  - coredns-config.yaml
 images:
   - name: registry.k8s.io/prometheus-adapter/prometheus-adapter
     newName: cr.vkp.app/registry.k8s.io/prometheus-adapter/prometheus-adapter
@@ -47,4 +48,16 @@ patches:
         value:
           name: pki
           mountPath: /var/run/secrets/paas.dcas.dev/pki
+          readOnly: true
+      - op: add
+        path: /spec/template/spec/volumes/-
+        value:
+          name: identity
+          secret:
+            secretName: vkp-identity
+      - op: add
+        path: /spec/template/spec/containers/0/volumeMounts/-
+        value:
+          name: identity
+          mountPath: /var/run/secrets/paas.dcas.dev/identity
           readOnly: true
