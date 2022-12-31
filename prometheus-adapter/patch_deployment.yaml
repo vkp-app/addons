@@ -23,3 +23,5 @@ spec:
             - --prometheus-client-tls-cert-file=/var/run/secrets/paas.dcas.dev/identity/tls.crt
             - --prometheus-client-tls-key-file=/var/run/secrets/paas.dcas.dev/identity/tls.key
             - --prometheus-ca-file=/var/run/secrets/paas.dcas.dev/identity/ca.crt
+          readinessProbe:
+            initialDelaySeconds: 5

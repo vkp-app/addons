@@ -70,3 +70,4 @@ patches:
             - --cookie-refresh=2h
             - --email-domain=*
             - --pass-authorization-header=true
+            - --skip-provider-button=true      
