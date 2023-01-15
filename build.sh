@@ -11,6 +11,6 @@ for dir in ./*/; do
     	echo "Running local build.sh..."
     	./build.sh
 	fi
-    imgpkg push --file-exclusion ".git, version.txt, build.sh, charts" -i "ghcr.io/vkp-app/addons/$dir:$(cat version.txt)" -f .
+    imgpkg push --file-exclusion ".git, .gitignore, version.txt, build.sh" -i "ghcr.io/vkp-app/addons/$dir:$(cat version.txt)" -f .
     cd ../
 done

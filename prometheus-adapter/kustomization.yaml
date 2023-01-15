@@ -15,9 +15,9 @@ resources:
   - manifests/service.yaml
   - manifests/service-account.yaml
   - coredns-config.yaml
-images:
-  - name: registry.k8s.io/prometheus-adapter/prometheus-adapter
-    newName: cr.vkp.app/registry.k8s.io/prometheus-adapter/prometheus-adapter
+#images:
+#  - name: registry.k8s.io/prometheus-adapter/prometheus-adapter
+#    newName: cr.vkp.app/registry.k8s.io/prometheus-adapter/prometheus-adapter
 patchesStrategicMerge:
   - patch_deployment.yaml
 patches:

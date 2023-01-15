@@ -11,7 +11,6 @@ helmCharts:
     repo: https://av1o.gitlab.io/charts
     valuesInline:
       image:
-        registry: harbor.dcas.dev/quay.io
         tag: 4.12.0
       console:
         dex:
